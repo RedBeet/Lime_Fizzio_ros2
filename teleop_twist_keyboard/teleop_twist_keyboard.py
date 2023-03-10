@@ -14,6 +14,7 @@ else:
     import termios
     import tty
 
+MAX_LINEAR_SPEED = 2.7855
 
 msg = """
 This node takes keypresses from the keyboard and publishes them
@@ -43,24 +44,24 @@ CTRL-C to quit
 """
 
 moveBindings = {
-    'i': (1, 0, 0, 0),
-    'o': (1, 0, 0, -1),
+    'i': (MAX_LINEAR_SPEED, 0, 0, 0),
+    'o': (MAX_LINEAR_SPEED, 0, 0, -1),
     'j': (0, 0, 0, 1),
     'l': (0, 0, 0, -1),
-    'u': (1, 0, 0, 1),
-    ',': (-1, 0, 0, 0),
-    '.': (-1, 0, 0, 1),
-    'm': (-1, 0, 0, -1),
-    'O': (1, -1, 0, 0),
-    'I': (1, 0, 0, 0),
-    'J': (0, 1, 0, 0),
-    'L': (0, -1, 0, 0),
-    'U': (1, 1, 0, 0),
-    '<': (-1, 0, 0, 0),
-    '>': (-1, -1, 0, 0),
-    'M': (-1, 1, 0, 0),
-    't': (0, 0, 1, 0),
-    'b': (0, 0, -1, 0),
+    'u': (MAX_LINEAR_SPEED, 0, 0, 1),
+    ',': (-MAX_LINEAR_SPEED, 0, 0, 0),
+    '.': (-MAX_LINEAR_SPEED, 0, 0, 1),
+    'm': (-MAX_LINEAR_SPEED, 0, 0, -1),
+    'O': (MAX_LINEAR_SPEED, -MAX_LINEAR_SPEED, 0, 0),
+    'I': (MAX_LINEAR_SPEED, 0, 0, 0),
+    'J': (0, MAX_LINEAR_SPEED, 0, 0),
+    'L': (0, -MAX_LINEAR_SPEED, 0, 0),
+    'U': (MAX_LINEAR_SPEED, MAX_LINEAR_SPEED, 0, 0),
+    '<': (-MAX_LINEAR_SPEED, 0, 0, 0),
+    '>': (-MAX_LINEAR_SPEED, -MAX_LINEAR_SPEED, 0, 0),
+    'M': (-MAX_LINEAR_SPEED, MAX_LINEAR_SPEED, 0, 0),
+    't': (0, 0, MAX_LINEAR_SPEED, 0),
+    'b': (0, 0, -MAX_LINEAR_SPEED, 0),
 }
 
 speedBindings = {

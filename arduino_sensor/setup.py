@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'temperature_pub_node = arduino_sensor.temp_pub_node:main'
+            'arduino_sensor = arduino_sensor.arduino_sensor:main'
         ],
     },
 )

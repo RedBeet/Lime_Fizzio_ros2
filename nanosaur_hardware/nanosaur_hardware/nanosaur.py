@@ -8,11 +8,9 @@ from rclpy.qos import QoSProfile
 
 # from sensor_msgs.msg import JointState
 from geometry_msgs.msg import Twist
-from sensor_msgs.msg import Temperature
+from std_msgs.msg import Bool
 
 from .motor import Motor
-# from .lcd import Lcd
-
 class NanoSaur(Node):
 
     def __init__(self):
@@ -28,26 +26,24 @@ class NanoSaur(Node):
         self.get_logger().debug(f"RPM motors {self.rpm}")
 
         self.motor = Motor(self.rpm)
-        # self.lcd = Lcd()
 
         self.velsubscription = self.create_subscription(
             Twist,
             'cmd_vel',
             self.drive_callback,
             10)
-        self.velsubscription 
 
-        self.tempsubscription = self.create_subscription(
-            Temperature,
-            'sensor_temp',
-            self.temperature_callback,
-            10
-        )
+        self.ultrasonicsubscription = self.create_subscription(
+            Bool,
+            'sensor_ultrasonic',
+            self.ultrasonic_callback,
+            10)
+
         # Node started
         self.get_logger().info("Hello Lime Fizzio!")
 
-        self.radius = 0.01
-        self.wheel_separation = 0.03
+        self.radius = 0.1
+        self.wheel_separation = 0.3
 
     def convert_speed(self, v, w):
         half_wheel_separation = self.wheel_separation / 2.
@@ -65,7 +61,8 @@ class NanoSaur(Node):
         self.get_logger().debug(f"v={v} w={w}")
         r = self.convert_speed(v, w)
         self.get_logger().debug(f"rad {r}")
-        max_speed = self.rpm / 60.
+        self.get_logger().info(f"v = {v}, w = {w}")
+        max_speed = self.rpm
         # Constrain between -max_speed << speed << max_speed.
         self.r = [max(-max_speed, min(max_speed, r[0])), max(-max_speed, min(max_speed, r[1]))]
         # Send a warning message if speed is over 
@@ -74,17 +71,15 @@ class NanoSaur(Node):
         if r[1] != self.r[1]:
             self.get_logger().warning(f"ref speed over {r[1] - self.r[1]}")
         # Convert speed to motor speed in RPM
-        rpmr = self.r[0] * 60.
-        rpml = self.r[1] * 60.
+        rpmr = self.r[0] * 60. / (2 * math.pi)
+        rpml = self.r[1] * 60. / (2 * math.pi)
         # Set to max RPM available
         self.get_logger().info(f"RPM R={rpmr} L={rpml}")
         self.motor.set_speed(rpmr, rpml)
-    
-    def temperature_callback(self, msg):
-        pass
-    #     temp = msg.temperature
-    #     self.lcd.temperature(temp)
-    
+
+    def ultrasonic_callback(self, msg):
+        if msg:
+            self.motor.set_speed(0,0)
 
 def main(args=None):
     rclpy.init(args=args)

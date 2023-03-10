@@ -11,14 +11,18 @@ class Motor:
 
     def __init__(self, rpm):
         self._rpm = rpm
+        print(f"self._rpm = {self._rpm}")
         self._leftdirection = "F"
         self._rightdirection = "F"
 
     def set_speed(self, rpmr, rpml):
+        print(rpmr, rpml)
         valuer = rpmr / self._rpm
         valuel = rpml / self._rpm
+        print(valuer, valuel)
         mapped_valuer = int(255 * valuer)
         mapped_valuel = int(255 * valuel)
+        print(mapped_valuel, mapped_valuer)
 
         speedl = min(max(abs(mapped_valuel), 0), 255)
         lvel = '0' * (3 - len(str(speedl))) + str(speedl)
