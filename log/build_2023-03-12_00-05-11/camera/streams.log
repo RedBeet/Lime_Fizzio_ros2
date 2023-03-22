@@ -1,0 +1,33 @@
+[1.308s] Invoking command in '/home/ohmin/ros2_ws/src/build/camera': PYTHONPATH=/home/ohmin/ros2_ws/src/build/camera/prefix_override:/home/ohmin/ros2_ws/src/install/camera/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/ohmin/ros2_ws/src/build/camera/build --no-deps install_data
+[1.965s] running develop
+[1.966s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[1.967s]   warnings.warn(
+[1.971s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.971s]   warnings.warn(
+[2.097s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 1.1build1 is an invalid version and will not be supported in a future release
+[2.097s]   warnings.warn(
+[2.098s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 0.1.43ubuntu1 is an invalid version and will not be supported in a future release
+[2.098s]   warnings.warn(
+[2.366s] running egg_info
+[2.366s] creating camera.egg-info
+[2.366s] writing camera.egg-info/PKG-INFO
+[2.367s] writing dependency_links to camera.egg-info/dependency_links.txt
+[2.367s] writing entry points to camera.egg-info/entry_points.txt
+[2.367s] writing requirements to camera.egg-info/requires.txt
+[2.368s] writing top-level names to camera.egg-info/top_level.txt
+[2.368s] writing manifest file 'camera.egg-info/SOURCES.txt'
+[2.371s] reading manifest file 'camera.egg-info/SOURCES.txt'
+[2.373s] writing manifest file 'camera.egg-info/SOURCES.txt'
+[2.376s] running build_ext
+[2.376s] Creating /home/ohmin/ros2_ws/src/install/camera/lib/python3.10/site-packages/camera.egg-link (link to .)
+[2.378s] Installing cam2image script to /home/ohmin/ros2_ws/src/install/camera/lib/camera
+[2.378s] Installing showimage script to /home/ohmin/ros2_ws/src/install/camera/lib/camera
+[2.379s] 
+[2.379s] Installed /home/ohmin/ros2_ws/src/build/camera
+[2.379s] running install_data
+[2.379s] creating /home/ohmin/ros2_ws/src/install/camera/share/ament_index
+[2.380s] creating /home/ohmin/ros2_ws/src/install/camera/share/ament_index/resource_index
+[2.380s] creating /home/ohmin/ros2_ws/src/install/camera/share/ament_index/resource_index/packages
+[2.380s] copying resource/camera -> /home/ohmin/ros2_ws/src/install/camera/share/ament_index/resource_index/packages
+[2.380s] copying package.xml -> /home/ohmin/ros2_ws/src/install/camera/share/camera
+[2.434s] Invoked command in '/home/ohmin/ros2_ws/src/build/camera' returned '0': PYTHONPATH=/home/ohmin/ros2_ws/src/build/camera/prefix_override:/home/ohmin/ros2_ws/src/install/camera/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/ohmin/ros2_ws/src/build/camera/build --no-deps install_data
